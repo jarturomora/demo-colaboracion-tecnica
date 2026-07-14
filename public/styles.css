@@ -1,0 +1,315 @@
+/* ============================================================
+   Formulario de Contacto – Hoja de Estilos Principal
+   ============================================================ */
+
+/* ----- Variables de diseño ----- */
+:root {
+  --color-primario: #2563eb;
+  --color-primario-oscuro: #1d4ed8;
+  --color-primario-claro: #dbeafe;
+  --color-exito: #16a34a;
+  --color-exito-claro: #dcfce7;
+  --color-error: #dc2626;
+  --color-error-claro: #fee2e2;
+  --color-texto: #1f2937;
+  --color-texto-suave: #6b7280;
+  --color-fondo: #f3f4f6;
+  --color-blanco: #ffffff;
+  --color-borde: #d1d5db;
+  --radio-borde: 8px;
+  --sombra: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --transicion: 0.2s ease;
+}
+
+/* ----- Reset básico ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----- Encabezado ----- */
+.encabezado {
+  background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%);
+  color: var(--color-blanco);
+  padding: 48px 16px;
+  text-align: center;
+}
+
+.encabezado__titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.encabezado__subtitulo {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ----- Contenedor principal ----- */
+.contenedor {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+}
+
+/* ----- Sección principal ----- */
+.principal {
+  flex: 1;
+  padding: 40px 0;
+}
+
+/* ----- Tarjeta del formulario ----- */
+.tarjeta-formulario {
+  background: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
+  padding: 40px;
+}
+
+/* ----- Formulario y campos ----- */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo__etiqueta {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-texto);
+}
+
+.campo__requerido {
+  color: var(--color-error);
+  margin-left: 2px;
+}
+
+.campo__entrada {
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-texto);
+  background: var(--color-blanco);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+  width: 100%;
+}
+
+.campo__entrada:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px var(--color-primario-claro);
+}
+
+.campo__entrada--textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.campo__entrada.invalido {
+  border-color: var(--color-error);
+}
+
+.campo__entrada.valido {
+  border-color: var(--color-exito);
+}
+
+.campo__error {
+  font-size: 0.85rem;
+  color: var(--color-error);
+  min-height: 1.2em;
+}
+
+.campo__contador {
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+  text-align: right;
+}
+
+/* ----- Alertas ----- */
+.alerta {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radio-borde);
+  font-size: 0.95rem;
+}
+
+.alerta--exito {
+  background: var(--color-exito-claro);
+  color: var(--color-exito);
+  border: 1px solid #bbf7d0;
+}
+
+.alerta--error {
+  background: var(--color-error-claro);
+  color: var(--color-error);
+  border: 1px solid #fecaca;
+}
+
+.alerta__icono {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+/* ----- Botón de envío ----- */
+.boton {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radio-borde);
+  padding: 12px 28px;
+  transition: background-color var(--transicion), transform var(--transicion), opacity var(--transicion);
+}
+
+.boton--primario {
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
+  width: 100%;
+}
+
+.boton--primario:hover:not(:disabled) {
+  background-color: var(--color-primario-oscuro);
+  transform: translateY(-1px);
+}
+
+.boton--primario:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ----- Utilidades ----- */
+.oculto {
+  display: none !important;
+}
+
+/* ----- Pie de página ----- */
+.pie {
+  background: var(--color-texto);
+  color: var(--color-blanco);
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+/* ----- Página de éxito (gracias.html) ----- */
+.seccion-exito {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 16px;
+}
+
+.tarjeta-exito {
+  background: var(--color-blanco);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra);
+  padding: 48px 40px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.exito__icono {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.exito__titulo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-exito);
+  margin-bottom: 12px;
+}
+
+.exito__mensaje {
+  color: var(--color-texto-suave);
+  font-size: 1rem;
+  margin-bottom: 28px;
+}
+
+.boton--secundario {
+  background-color: transparent;
+  color: var(--color-primario);
+  border: 2px solid var(--color-primario);
+}
+
+.boton--secundario:hover {
+  background-color: var(--color-primario-claro);
+}
+
+/* ----- Página 404 ----- */
+.seccion-404 {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 16px;
+}
+
+.codigo-404 {
+  font-size: 6rem;
+  font-weight: 900;
+  color: var(--color-primario);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.titulo-404 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.mensaje-404 {
+  color: var(--color-texto-suave);
+  margin-bottom: 28px;
+}
+
+/* ----- Diseño responsivo ----- */
+@media (max-width: 600px) {
+  .encabezado__titulo {
+    font-size: 1.5rem;
+  }
+
+  .tarjeta-formulario {
+    padding: 24px 16px;
+  }
+}

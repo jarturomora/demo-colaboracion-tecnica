@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Formulario de contacto - Envíanos tu mensaje y te responderemos a la brevedad." />
+  <title>Formulario de Contacto</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor">
+      <h1 class="encabezado__titulo">📬 Contáctanos</h1>
+      <p class="encabezado__subtitulo">Envíanos tu mensaje y te responderemos a la brevedad</p>
+    </div>
+  </header>
+
+  <main class="principal">
+    <div class="contenedor">
+      <div class="tarjeta-formulario">
+        <form id="formularioContacto" class="formulario" novalidate>
+          <!-- Nombre -->
+          <div class="campo" id="campo-nombre">
+            <label class="campo__etiqueta" for="nombre">
+              Nombre completo <span class="campo__requerido" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="campo__entrada"
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Ej. María García"
+              autocomplete="name"
+              maxlength="100"
+              required
+            />
+            <span class="campo__error" id="error-nombre" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Correo -->
+          <div class="campo" id="campo-correo">
+            <label class="campo__etiqueta" for="correo">
+              Correo electrónico <span class="campo__requerido" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="campo__entrada"
+              type="email"
+              id="correo"
+              name="correo"
+              placeholder="Ej. maria@ejemplo.com"
+              autocomplete="email"
+              required
+            />
+            <span class="campo__error" id="error-correo" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Asunto -->
+          <div class="campo" id="campo-asunto">
+            <label class="campo__etiqueta" for="asunto">
+              Asunto <span class="campo__requerido" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="campo__entrada"
+              type="text"
+              id="asunto"
+              name="asunto"
+              placeholder="¿En qué podemos ayudarte?"
+              maxlength="200"
+              required
+            />
+            <span class="campo__error" id="error-asunto" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="campo" id="campo-mensaje">
+            <label class="campo__etiqueta" for="mensaje">
+              Mensaje <span class="campo__requerido" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              class="campo__entrada campo__entrada--textarea"
+              id="mensaje"
+              name="mensaje"
+              rows="6"
+              placeholder="Escribe tu mensaje aquí..."
+              maxlength="2000"
+              required
+            ></textarea>
+            <span class="campo__contador" id="contador-mensaje">0 / 2000</span>
+            <span class="campo__error" id="error-mensaje" role="alert" aria-live="polite"></span>
+          </div>
+
+          <!-- Mensaje de estado -->
+          <div class="alerta alerta--exito oculto" id="alerta-exito" role="status" aria-live="polite">
+            <span class="alerta__icono">✅</span>
+            <span class="alerta__texto" id="texto-exito"></span>
+          </div>
+          <div class="alerta alerta--error oculto" id="alerta-error" role="alert" aria-live="assertive">
+            <span class="alerta__icono">❌</span>
+            <span class="alerta__texto" id="texto-error"></span>
+          </div>
+
+          <!-- Botón de envío -->
+          <button class="boton boton--primario" type="submit" id="botonEnviar">
+            <span class="boton__texto">Enviar mensaje</span>
+            <span class="boton__cargando oculto" aria-hidden="true">⏳ Enviando...</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>© 2024 Demo Colaboración Técnica. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
