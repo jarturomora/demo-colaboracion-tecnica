@@ -2,7 +2,7 @@
 
 [![Estado del Proyecto](https://img.shields.io/badge/estado-activo-brightgreen)](https://github.com/jarturomora/demo-colaboracion-tecnica)
 [![Versión](https://img.shields.io/badge/versión-1.0.0-blue)](CHANGELOG.md)
-[![Licencia](https://img.shields.io/badge/licencia-MIT-green)](LICENSE)
+[![Licencia](https://img.shields.io/badge/licencia-GPL-green)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933)](https://nodejs.org)
 
 Aplicación web para el envío de formularios de contacto con notificaciones por correo electrónico. Desarrollada con Node.js y Express, cuenta con validación en el servidor, diseño responsivo y protección contra abuso.
