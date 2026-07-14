@@ -26,7 +26,15 @@ app.use(
   })
 );
 
-// Límite de peticiones para prevenir abuso
+// Límite general de peticiones (páginas)
+const limiterGeneral = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 200,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Límite estricto de peticiones para el envío del formulario
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
   max: 10,
@@ -44,11 +52,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Rutas
-app.get('/', (req, res) => {
+app.get('/', limiterGeneral, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.get('/gracias', (req, res) => {
+app.get('/gracias', limiterGeneral, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/gracias.html'));
 });
 
@@ -118,7 +126,10 @@ app.post('/api/contacto', limiter, validadoresContacto, async (req, res) => {
 });
 
 // Manejo de rutas no encontradas
-app.use((req, res) => {
+app.use(limiterGeneral, (req, res) => {
+  if (req.path.startsWith('/api/')) {
+    console.warn(`[404] Ruta de API no encontrada: ${req.method} ${req.path}`);
+  }
   res.status(404).sendFile(path.join(__dirname, '../public/404.html'));
 });
 
